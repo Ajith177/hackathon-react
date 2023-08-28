@@ -6,9 +6,9 @@ import Login from './Login';
 import About from './About';
 import Contact from './Contact';
 import Home from './Home';
+import Cart from './Cart';
 
 const App = () =>{
-  console.log("hello");
   return (
     <div className="App">
       <h2 className="text-primary">HELLO REACT</h2>
@@ -19,6 +19,7 @@ const App = () =>{
         <Route path='About'element={<About/>}></Route>
         <Route path='Contact'element={<Contact/>}></Route>
         <Route path='Login' element={<Login/>}></Route>
+        <Route path='Cart' element={<Cart/>}></Route>
       </Routes>
       </Router>
      
