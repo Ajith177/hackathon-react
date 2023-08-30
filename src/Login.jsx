@@ -22,9 +22,15 @@ const Login = () => {
 
   const handleSubmit =(event)=>{
     event.preventDefault();
+    if(!email || !password ){
+      alert("Please fill the required fields")
+    }
+    else{
     setList([...list,email,password])
     setEmail("");
     setPassword("");
+    }
+    
   }
   console.log(setList);
   

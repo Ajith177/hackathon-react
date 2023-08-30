@@ -5,7 +5,6 @@ import{useNavigate}from 'react-router-dom'
 
 
 const Home = () => {
-
 const[state,setState]=useState([]);
 const [res,setRes]=useState([]);
 const[pushing,setPushing]=useState([]);

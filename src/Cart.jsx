@@ -1,20 +1,31 @@
-import React,{useState} from 'react';
-// import{useNavigate} from 'react-router-dom';
+import React,{useEffect, useState} from 'react';
 import {useLocation } from 'react-router-dom';
 
 const Cart = () => {
 
-  // const navigate=useNavigate()
+  // const [arr,setArr]=useState([]);
+
+
+  const [change,setChange]=useState([]);
 
   const location=useLocation()
 
-  console.log(location.state.capture)   // worked......
+
+  // console.log(location.state.capture)   // worked......
+
+
+  useEffect(()=>{
+    setChange(location.state.capture)
+  },[location.state.capture])
+
+
+
+  // console.log(change)
 
   // console.log(typeof location.state.capture);
 
-  const capturing=structuredClone(location.state.capture)
-  console.log(capturing,"ajithganapathy")
-
+  // const capturing=structuredClone(location.state.capture)
+  // console.log(capturing,"ajithganapathy")
 
 // const Cart=(lists)=>{
 
@@ -24,12 +35,16 @@ const Cart = () => {
 // function handlehome(){
 //   navigate('/HOME')
 // }
-  // const [arr,stArr]=useState([]);
+
+  // function handle_remove(){
+
+  //   setArr([...location.state.capture,arr]);
+  //   console.log(arr);
+  // }
 
   function handle_remove(id){
-
-    const removing_item=capturing.filter((values)=>values.id!==id);
-    capturing(removing_item);
+    const remove=change.filter((item)=>item.id!==id);
+    setChange(remove);
   }
 
   return (
@@ -37,10 +52,10 @@ const Cart = () => {
 
       {/* <button  className='cart-page-home'  onClick={()=>handlehome()}>Back to HOME</button> */}
 
-
-
       {
-        capturing.map((items)=>{
+        // location.state.capture.map((items)=>{
+
+          change.map((items)=>{
           return(
             <div className='cart-content'>
 
@@ -50,6 +65,7 @@ const Cart = () => {
             </div>
 
             <div className='listing-contents'>
+              
             <p className="price">${items.price}</p>
             <p className='category'>Category:{items.category}</p><br/>
             <p className='cart-item'>items id:{items.id}</p>
@@ -58,10 +74,10 @@ const Cart = () => {
             </div>
 
             <div className='cart-changes-add-sub-del'> 
-              <p>INCREMENT:{3}</p>
-              <button  className='cart-changes-button'  onClick={()=>handle_remove(items.id)}>REMOVE</button>
-              <p>DECREMENT:{5}</p>
 
+              <p>INCREMENT:{3}</p>
+              <button  className='cart-changes-button' onClick={()=>handle_remove(items.id)}>REMOVE</button>
+              <p>DECREMENT:{5}</p>
 
             </div>
 
@@ -69,21 +85,7 @@ const Cart = () => {
           )
         })
       }
-
-
-
-
-      {/* {
-        lists.map((item)=>{
-          return(
-            <>
-            <p>{item.title}</p>
-            <p>{item.id}</p>
-            </>
-          )
-        })
-      } */}
-
+    
 
     </div>
   )

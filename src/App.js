@@ -11,7 +11,7 @@ import Cart from './Cart';
 const App = () =>{
   return (
     <div className="App">
-      <h2 className="text-primary">HELLO REACT</h2>
+      {/* <h2 className="text-primary">HELLO REACT</h2> */}
       <Router>
       <Navbar/>
       <Routes>
